@@ -3,6 +3,7 @@ resource "aws_instance" "mongodb" {
     ami = data.aws_ami.ami_info.id
     instance_type = var.instance_type
     vpc_security_group_ids = [local.public_subnet_id]
+    user_data = file(mongodb.sh)
     tags = merge(
         var.common_tags,
         var.mongodb_tags,
