@@ -16,7 +16,10 @@ variable "common_tags" {
     }
 }
 
-
 variable "instance_type" {
     default = "t3.micro"
+}
+
+variable "zone_id" {
+    default = "guru97s.cloud"
 }
