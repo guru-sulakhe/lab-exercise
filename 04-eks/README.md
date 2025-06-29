@@ -26,7 +26,7 @@ These AWS managed policies are attached to the node IAM role:
 
 * ElasticLoadBalancingFullAccess
 
-* These allow Kubernetes workloads on EKS to interact with:
+These allow Kubernetes workloads on EKS to interact with:
 
 * Elastic Block Store (EBS) volumes
 
