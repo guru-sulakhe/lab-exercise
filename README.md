@@ -1,1 +1,1 @@
-[text](../../Downloads/lab-exercise.drawio)
+![Alt Text](../../Downloads/lab-exercise.drawio)
