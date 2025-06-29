@@ -1,28 +1,18 @@
 variable "project_name" {
-    default = "roboshop"
+    default = "lab-exercise"
 }
 variable "environment"{
-    default = "prod"
+    default = "dev"
 }
 variable "common_tags" {
     default = {
-        Project = "roboshop"
+        Project = "lab-exercise"
         Environment = "prod"
         Terraform = true
     }
 }
 variable "mongodb_sg_tags"{
     default = {
-        Component = "mysql"
-    }
-}
-variable "bastion_sg_tags" {
-    default = {
-        Component = "bastion"
-    }
-}
-variable "frontend_sg_tags" {
-    default = {
-        Component = "frontend"
+        Component = "mongodb"
     }
 }
