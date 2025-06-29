@@ -1,1 +1,1 @@
-![Alt Text](../../Downloads/lab-exercise.drawio)
+![alt text](<Untitled Diagram.drawio.png>)
