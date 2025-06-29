@@ -2,6 +2,10 @@ variable "project_name"{
     default = "lab-exercise"
 }
 
+variable "environment" {
+    default = "dev"
+}
+
 variable "mongodb_tags" {
     default = {
         Component = "mongodb"
