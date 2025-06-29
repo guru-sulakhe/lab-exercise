@@ -26,6 +26,15 @@ module "eks_control_plane_sg" {
     vpc_id = local.vpc_id
 }
 
+module "bastion_sg" {
+    source = "git::https://github.com/guru-sulakhe/terraform-aws-security-group.git?ref=main"
+    project_name = var.project_name
+    environment = var.environment
+    common_tags = var.common_tags
+    sg_name = "bastion_sg"
+    vpc_id = local.vpc_id
+}
+
 resource "aws_security_group_rule" "node_eks_control_plane" {
     type = "ingress"
     from_port = 0
@@ -60,4 +69,43 @@ resource "aws_security_group_rule" "mongodb_node"{
     protocol = "tcp"
     source_security_group_id = module.node_sg.id
     security_group_id = module.mongodb_sg.id
+}
+
+
+resource "aws_security_group_rule" "mongodb_to_bastion" {
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
+  source_security_group_id = module.bastion_sg.id
+  security_group_id        = module.mongodb_sg.id
+
+}
+
+
+resource "aws_security_group_rule" "node_bastion" {
+    type = "ingress"
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    source_security_group_id = module.bastion_sg.id
+    security_group_id = module.node_sg.id
+}
+
+resource "aws_security_group_rule" "eks_control_plane_bastion" {
+    type = "ingress"
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    source_security_group_id = module.bastion_sg.id
+    security_group_id = module.eks_control_plane_sg.id
+}
+
+resource "aws_ssm_parameter" "bastion_public" {
+    type = "ingress"
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    security_group_id = module.bastion_sg.id
 }

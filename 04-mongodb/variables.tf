@@ -25,5 +25,5 @@ variable "instance_type" {
 }
 
 variable "zone_id" {
-    default = "guru97s.cloud"
+    default = "Z08273698E2G6XTP9T7C"
 }
