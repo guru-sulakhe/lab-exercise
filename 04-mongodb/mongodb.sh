@@ -10,7 +10,7 @@ Y="\e[33m"
 N="\e[0m"
 
 VALIDATE(){
-    if [$1 -ne 0]
+    if [ $1 -ne 0 ]
     then
         echo -e "$2.. $R Failed $N"
     else
@@ -18,7 +18,7 @@ VALIDATE(){
     fi   
 }
 
-if [$USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
     echo "you don't have access, only root-user can access the file, try to login in as root-user"
     exit 1 # manually exits if error

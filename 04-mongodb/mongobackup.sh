@@ -1,14 +1,15 @@
 DB_NAME="myNewDatabase" # Replace with your MongoDB database name
 COLLECTION_NAME="initCollection"
+TIMESTAMP=$(date +%F-%H-%M-%S)
 MONGO_HOST="localhost"
 MONGO_PORT="27017"
 S3_BUCKET="mongodb_backups"
-BACKUP_DIR="/opt/mongodb_backups"
+BACKUP_DIR="/opt/mongodb_backups" #THis is location of the backup files are located in linux server
 BACKUP_FILE="mongodb_backup_$TIMESTAMP.gz"
 ARCHIVE_PATH="$BACKUP_DIR/$BACKUP_FILE"
 
 VALIDATE(){
-    if [$1 -ne 0]
+    if [ $1 -ne 0 ]
     then
         echo -e "$2.. $R Failed $N"
     else
@@ -16,7 +17,7 @@ VALIDATE(){
     fi   
 }
 
-if [$USERID -ne 0]
+if [ $USERID -ne 0 ]
 then
     echo "you don't have access, only root-user can access the file, try to login in as root-user"
     exit 1 # manually exits if error
