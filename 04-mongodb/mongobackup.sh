@@ -1,4 +1,4 @@
-DB_NAME="myNewDatabase" # Replace with your MongoDB database name
+DB_NAME="Mongodb_Backups" # Replace with your MongoDB database name
 COLLECTION_NAME="initCollection"
 TIMESTAMP=$(date +%F-%H-%M-%S)
 MONGO_HOST="localhost"
