@@ -65,11 +65,18 @@ VALIDATE $? "Verifying aws cli"
 chmod +x /home/ec2-user/lab-exercise/03-mongodb/mongodb.sh
 
 #source ./mongobackup.sh #it is second way of calling other script.
+
+# aws configure --> run the script and enter secret access key,access key
+
+# Next execute below script to run crontab
+
 nano mongobackup.sh
+
 
 chmod +x /home/ec2-user/lab-exercise/03-mongodb/mongobackup.sh
 
 crontab -e
+
 
 # */2 * * * * /home/ec2-user/lab-exercise/03-mongodb/mongobackup.sh
 # crontab -l --> List all currently scheduled cron jobs for the current user.

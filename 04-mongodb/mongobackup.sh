@@ -17,14 +17,6 @@ VALIDATE(){
     fi   
 }
 
-if [ $USERID -ne 0 ]
-then
-    echo "you don't have access, only root-user can access the file, try to login in as root-user"
-    exit 1 # manually exits if error
-else
-    echo "You are super-user"
-fi
-
 # Create Database and Insert Initial Document into Collection
 mongo --host "$MONGO_HOST" --port "$MONGO_PORT" <<EOF
 use $DB_NAME
